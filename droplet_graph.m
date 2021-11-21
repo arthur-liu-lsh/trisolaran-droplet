@@ -4,7 +4,7 @@ close all;
 clear;
 clc;
 
-%%
+%% 2D render
 
 N1 = 100;
 
@@ -21,7 +21,7 @@ xlim([-0.5 4])
 axis equal
 grid on
 
-%%
+%% 3D render
 
 N2 = 100;
 
