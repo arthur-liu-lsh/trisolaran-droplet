@@ -4,4 +4,4 @@ This script complements an article in which I try to calculate the mass of a Tri
 
 This script renders a Longchamps piriform in 2D and 3D, which is the shape chosen to model the droplet's shape.
 
-It also contains the functions that can calculate the area and volumes of said shape.
+It also contains the functions that can calculate the areas and volumes of said shape.
