@@ -49,25 +49,3 @@ sl(1).FaceColor = [grey grey grey];
 sl(1).EdgeColor = 'none';
 axis equal
 
-
-%% Numerical applications
-
-fprintf('Numerical applications:\n');
-
-r = 0.5;
-h = 3;
-
-% sigma = 656;
-
-A1 = pi*r*(2*r + sqrt(r^2+h^2));
-V1 = 1/3*pi*r^2*(2*r + h);
-
-fprintf('Approx area: %3.2fm²\nApprox volume: %3.2fm³\n',A1,V1);
-
-A2 = pi^2*b*(3*b^2+a^2)/a;
-V2 = 8/5*pi*a*b^2;
-
-fprintf('Piriform area: %3.2fm²\nPiriform volume: %3.2fm³\n',A2,V2);
-% m = A2*sigma;
-
-fprintf('\n');
