@@ -1,4 +1,9 @@
 %% Approximate form parameters
+
+% The shape of a droplet can be approximated by combining a hemisphere and a cone
+% The hemisphere has a radius r
+% The cone has a base radius r and a height h
+% Those parameters are chosen in order to have a droplet of length and width 3.5m and 1m respectively.
 r = 0.5;
 h = 3;
 
@@ -34,22 +39,48 @@ sigmaTri = (1/2)*m/(sqrt(3)/4*s^2);
 % Hexagonal structure
 sigmaHex = 2*m/(3*sqrt(3)/2*s^2);
 
-%% Numerical applications
+%% Area and volume
 
-fprintf('Numerical applications:\n');
-
-% sigma = 656;
-
+% Approximation
 A1 = pi*r*(2*r + sqrt(r^2+h^2));
 V1 = 1/3*pi*r^2*(2*r + h);
 
-fprintf('Approx area: %3.2fm淚nApprox volume: %3.2fm許n',A1,V1);
+% Define integrand
+% Integrand is f(t)=y(t)*sqrt(x'(t)^2+y'(t)^2)
+y = @(t,b) b*cos(t).*(1+sin(t));
+dx = @(t,a) a*cos(t);
+dy = @(t,b) -b*(sin(t).^2 + sin(t) - cos(t).^2);
+f = @(t,a,b) y(t,b).*sqrt(dx(t,a).^2 + dy(t,b).^2);
+% f = @(x,a,b) b/a^2 * sqrt(x.^3.*(2*a-x)) .* sqrt(1 + (b/a^2 * x.^2.*(3*a-2*x)./sqrt(x.^3.*(2*a-x))));
 
-% WRONG CALCULATION !!! Need to integrate numerically
-% A2 = pi^2*b*(3*b^2+a^2)/a;
-% V2 = 8/5*pi*a*b^2;
-% 
-% fprintf('Piriform area: %3.2fm淚nPiriform volume: %3.2fm許n',A2,V2);
-% m = A2*sigma;
+A2 = 2*pi*integral(@(t) f(t,a,b),-pi/2,pi/2);
+V2 = 8/5*pi*a*b^2;
+
+%% Outer layer mass
+
+% Approximate form
+m1tri = sigmaTri*A1;
+m1hex = sigmaHex*A1;
+
+% Piriform
+m2tri = sigmaTri*A2;
+m2hex = sigmaHex*A2;
+
+%% Show results
+
+fprintf('Area density (triangular structure): %.3ekg/m淚n',sigmaTri);
+fprintf('Area density (hexagonal structure): %.3ekg/m淚n',sigmaHex);
+fprintf('\n');
+fprintf('Approx. area: %.3em淚n',A1);
+fprintf('Approx. volume: %.3em許n',V1)
+fprintf('Approx. mass (triangular structure): %.3ekg\n',m1tri);
+fprintf('Approx. mass (hexagonal structure): %.3ekg\n',m1hex);
+fprintf('\n');
+fprintf('Piriform area: %.3em淚n',A2);
+fprintf('Piriform volume: %.3em許n',V2)
+fprintf('Piriform mass (triangular structure): %.3ekg\n',m2tri);
+fprintf('Piriform mass (hexagonal structure): %.3ekg\n',m2hex);
+
+
 
 fprintf('\n');
