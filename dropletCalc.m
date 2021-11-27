@@ -1,3 +1,9 @@
+%Written by Eclypse-Prime
+
+close all;
+clear;
+clc;
+
 %% Approximate form parameters
 
 % The shape of a droplet can be approximated by combining a hemisphere and a cone
@@ -22,7 +28,7 @@ b = 2/(3*sqrt(3));
 % Mass of a neutron
 m = 1.6726e-27;
 
-% Distance between neutrons
+% Distance between neutrons (also neutron radius)
 s = 1.684e-15;
 
 %% Area density
@@ -51,7 +57,6 @@ y = @(t,b) b*cos(t).*(1+sin(t));
 dx = @(t,a) a*cos(t);
 dy = @(t,b) -b*(sin(t).^2 + sin(t) - cos(t).^2);
 f = @(t,a,b) y(t,b).*sqrt(dx(t,a).^2 + dy(t,b).^2);
-% f = @(x,a,b) b/a^2 * sqrt(x.^3.*(2*a-x)) .* sqrt(1 + (b/a^2 * x.^2.*(3*a-2*x)./sqrt(x.^3.*(2*a-x))));
 
 A2 = 2*pi*integral(@(t) f(t,a,b),-pi/2,pi/2);
 V2 = 8/5*pi*a*b^2;
