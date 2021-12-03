@@ -6,4 +6,4 @@ This project complements an article in which I try to calculate the mass of a Tr
 This script renders a Longchamps piriform in 2D and 3D, which is the shape chosen to model the droplet's shape.
 
 ## dropletCalc.m
-This script contains numerical applications to calculate areas, volume, surface density, and mass of a piriform droplet and its simple shape approximation.
+This script contains numerical applications to calculate areas, volume, area density, and mass of a piriform droplet and its simple shape approximation.
