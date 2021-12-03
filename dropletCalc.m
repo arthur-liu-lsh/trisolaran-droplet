@@ -29,7 +29,7 @@ b = 2/(3*sqrt(3));
 m = 1.6726e-27;
 
 % Distance between neutrons (also neutron radius)
-s = 1.684e-15;
+d = 1.684e-15;
 
 %% Area density
 
@@ -40,10 +40,10 @@ s = 1.684e-15;
 % - A is the area of a cell
 
 % Triangular structure
-sigmaTri = (1/2)*m/(sqrt(3)/4*s^2);
+sigmaTri = (1/2)*m/(sqrt(3)/4*d^2);
 
 % Hexagonal structure
-sigmaHex = 2*m/(3*sqrt(3)/2*s^2);
+sigmaHex = 2*m/(3*sqrt(3)/2*d^2);
 
 %% Area and volume
 
